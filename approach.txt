@@ -1,0 +1,9 @@
+Approch: Since there are six categorical features used catboostregressor to train the model. The catboost model is specially designed for handling preprocessing and feature engineering task.
+1. Started with default parameters of catboostregressor and it gives R2 score ~81.
+2. Manually tried the parameters l2_leaf_reg=3, learning_rate=0.09,iterations=292,depth=12 and it gives R2 score ~82
+3. Compared both the models from steps 1 and 2. The model with manual parameters gives best result at 292 iterations.
+4. Cross Validation with 3 folds given RMSE score ~ 68
+5. The features Furnishing, Neighborhood Review and Power Backup score has a major impact Habitability score followed by Property Area, Crime Rate, Dust and Noise, Water Supply, Number of Windows, Property Type, Traffic Desncity Score. Air Quality Index, Frequency of powercuts, and number of doors are not much significant in the prediction of Habitability scores.
+6. Using grid_search and optuna found best hyperparameters learning_rate=0.015,depth=15, l2_leaf_reg=4.0, min_child_samples=1 from optuna.
+7. Upon applying the model with best hyper parameters got R2 score ~83
+Tools Used: Python, Numpy, Scikit Learn, catboost and tensorflow.
